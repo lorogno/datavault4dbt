@@ -75,6 +75,7 @@
                                         Optional parameter, default is True.
     " %}
 
+{%- if var('datavault4dbt.use_metadata_parser', false) -%}
     {%- set tracked_entity          = datavault4dbt.yaml_metadata_parser(name='tracked_entity', yaml_metadata=yaml_metadata, parameter=tracked_entity, required=True, documentation=tracked_entity_description) -%}
     {%- set hashkey                 = datavault4dbt.yaml_metadata_parser(name='hashkey', yaml_metadata=yaml_metadata, parameter=hashkey, required=True, documentation=hashkey_description) -%}
     {%- set sat_names               = datavault4dbt.yaml_metadata_parser(name='sat_names', yaml_metadata=yaml_metadata, parameter=sat_names, required=True, documentation=sat_names_description) -%}
@@ -87,6 +88,7 @@
     {%- set sdts                    = datavault4dbt.yaml_metadata_parser(name='sdts', yaml_metadata=yaml_metadata, parameter=sdts, required=False, documentation=sdts_description) -%}
     {%- set pit_type                = datavault4dbt.yaml_metadata_parser(name='pit_type', yaml_metadata=yaml_metadata, parameter=pit_type, required=False, documentation=pit_type_description) -%}
     {%- set refer_to_ghost_records  = datavault4dbt.yaml_metadata_parser(name='refer_to_ghost_records', yaml_metadata=yaml_metadata, parameter=refer_to_ghost_records, required=False, documentation=pit_type_description) -%}
+{% endif %}
 
     {# Applying the default aliases as stored inside the global variables, if ldts, sdts and ledts are not set. #}
 

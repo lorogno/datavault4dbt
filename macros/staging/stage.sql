@@ -125,6 +125,7 @@
     enable_ghost_records::boolean       If set to true, the stage will be created with ghost records. By default, ghost records are enabled. Optional Parameter.
   " %}
 
+{%- if var('datavault4dbt.use_metadata_parser', false) -%}
   {%- set ldts                    = datavault4dbt.yaml_metadata_parser(name='ldts', yaml_metadata=yaml_metadata, parameter=ldts, required=True, documentation=ldts_description) -%}
   {%- set rsrc                    = datavault4dbt.yaml_metadata_parser(name='rsrc', yaml_metadata=yaml_metadata, parameter=rsrc, required=True, documentation=rsrc_description) -%}
   {%- set source_model            = datavault4dbt.yaml_metadata_parser(name='source_model', yaml_metadata=yaml_metadata, parameter=source_model, required=True, documentation=source_model_description) -%}
@@ -136,6 +137,7 @@
   {%- set missing_columns         = datavault4dbt.yaml_metadata_parser(name='missing_columns', yaml_metadata=yaml_metadata, parameter=missing_columns, required=False, documentation=missing_columns_description) -%}
   {%- set multi_active_config     = datavault4dbt.yaml_metadata_parser(name='multi_active_config', yaml_metadata=yaml_metadata, parameter=multi_active_config, required=False, documentation=multi_active_config_description) -%}
   {%- set enable_ghost_records    = datavault4dbt.yaml_metadata_parser(name='enable_ghost_records', yaml_metadata=yaml_metadata, parameter=enable_ghost_records, required=False, documentation=enable_ghost_records_description) -%}
+{%- endif -%}
 
   {# If include_source_columns is passed but its empty then it is set with the default value (true) #}
   {%- if include_source_columns is none or include_source_columns == "" -%}

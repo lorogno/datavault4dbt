@@ -78,6 +78,7 @@
                                                 will be set to false.
     " %}
 
+{%- if var('datavault4dbt.use_metadata_parser', false) -%}
     {%- set sat_v0              = datavault4dbt.yaml_metadata_parser(name='sat_v0', yaml_metadata=yaml_metadata, parameter=sat_v0, required=True, documentation=sat_v0_description) -%}
     {%- set hashkey             = datavault4dbt.yaml_metadata_parser(name='hashkey', yaml_metadata=yaml_metadata, parameter=hashkey, required=True, documentation=hashkey_description) -%}
     {%- set hashdiff            = datavault4dbt.yaml_metadata_parser(name='hashdiff', yaml_metadata=yaml_metadata, parameter=hashdiff, required=True, documentation=hashdiff_description) -%}
@@ -86,6 +87,7 @@
     {%- set src_rsrc            = datavault4dbt.yaml_metadata_parser(name='src_rsrc', yaml_metadata=yaml_metadata, parameter=src_rsrc, required=False, documentation=src_rsrc_description) -%}
     {%- set ledts_alias         = datavault4dbt.yaml_metadata_parser(name='ledts_alias', yaml_metadata=yaml_metadata, parameter=ledts_alias, required=False, documentation=ledts_alias_description) -%}
     {%- set add_is_current_flag = datavault4dbt.yaml_metadata_parser(name='add_is_current_flag', yaml_metadata=yaml_metadata, parameter=add_is_current_flag, required=False, documentation=add_is_current_flag_description) -%}
+{% endif %}
 
     {# Applying the default aliases as stored inside the global variables, if src_ldts, src_rsrc, and ledts_alias are not set. #}
 

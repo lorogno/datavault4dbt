@@ -97,6 +97,7 @@
                                             source systems, and don't want to deduplicate them upfront. 
     " %}
 
+{%- if var('datavault4dbt.use_metadata_parser', false) -%}
     {%- set link_hashkey            = datavault4dbt.yaml_metadata_parser(name='link_hashkey', yaml_metadata=yaml_metadata, parameter=link_hashkey, required=True, documentation=link_hashkey_description) -%}
     {%- set payload                 = datavault4dbt.yaml_metadata_parser(name='payload', yaml_metadata=yaml_metadata, parameter=payload, required=True, documentation=payload_description) -%}
     {%- set source_models           = datavault4dbt.yaml_metadata_parser(name='source_models', yaml_metadata=yaml_metadata, parameter=source_models, required=True, documentation=source_models_description) -%}
@@ -106,7 +107,7 @@
     {%- set disable_hwm             = datavault4dbt.yaml_metadata_parser(name='disable_hwm', yaml_metadata=yaml_metadata, parameter=disable_hwm, required=False, documentation='Whether the High Water Mark should be turned off. Optional, default False.') -%}
     {%- set source_is_single_batch  = datavault4dbt.yaml_metadata_parser(name='source_is_single_batch', yaml_metadata=yaml_metadata, parameter=source_is_single_batch, required=False, documentation='Whether the source contains only one batch. Optional, default False.') -%}
     {%- set union_strategy =  datavault4dbt.yaml_metadata_parser(name='union_strategy', yaml_metadata=yaml_metadata, parameter=union_strategy, required=False, documentation=union_strategy_description) -%}
-
+{% endif %}
     {# Applying the default aliases as stored inside the global variables, if src_ldts and src_rsrc are not set. #}
 
     {%- set src_ldts = datavault4dbt.replace_standard(src_ldts, 'datavault4dbt.ldts_alias', 'ldts') -%}
