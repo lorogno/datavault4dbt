@@ -125,7 +125,7 @@
     enable_ghost_records::boolean       If set to true, the stage will be created with ghost records. By default, ghost records are enabled. Optional Parameter.
   " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
   {%- set ldts                    = datavault4dbt.yaml_metadata_parser(name='ldts', yaml_metadata=yaml_metadata, parameter=ldts, required=True, documentation=ldts_description) -%}
   {%- set rsrc                    = datavault4dbt.yaml_metadata_parser(name='rsrc', yaml_metadata=yaml_metadata, parameter=rsrc, required=True, documentation=rsrc_description) -%}
   {%- set source_model            = datavault4dbt.yaml_metadata_parser(name='source_model', yaml_metadata=yaml_metadata, parameter=source_model, required=True, documentation=source_model_description) -%}

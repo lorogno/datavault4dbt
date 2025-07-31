@@ -97,7 +97,7 @@
                                             source systems, and don't want to deduplicate them upfront. 
     " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set link_hashkey            = datavault4dbt.yaml_metadata_parser(name='link_hashkey', yaml_metadata=yaml_metadata, parameter=link_hashkey, required=True, documentation=link_hashkey_description) -%}
     {%- set payload                 = datavault4dbt.yaml_metadata_parser(name='payload', yaml_metadata=yaml_metadata, parameter=payload, required=True, documentation=payload_description) -%}
     {%- set source_models           = datavault4dbt.yaml_metadata_parser(name='source_models', yaml_metadata=yaml_metadata, parameter=source_models, required=True, documentation=source_models_description) -%}

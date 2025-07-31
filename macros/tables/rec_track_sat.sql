@@ -73,7 +73,7 @@
     src_stg::string                 Name of the source stage model. Is optional, will use the global variable  'datavault4dbt.stg_alias'.
     " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set tracked_hashkey = datavault4dbt.yaml_metadata_parser(name='tracked_hashkey', yaml_metadata=yaml_metadata, parameter=tracked_hashkey, required=True, documentation=tracked_hashkey_description) -%}
     {%- set source_models   = datavault4dbt.yaml_metadata_parser(name='source_models', yaml_metadata=yaml_metadata, parameter=source_models, required=True, documentation=source_models_description) -%}
     {%- set src_ldts        = datavault4dbt.yaml_metadata_parser(name='src_ldts', yaml_metadata=yaml_metadata, parameter=src_ldts, required=False, documentation=src_ldts_description) -%}

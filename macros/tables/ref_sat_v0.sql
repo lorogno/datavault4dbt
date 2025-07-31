@@ -41,7 +41,7 @@
                                     Needs to use the same column name as defined as alias inside the staging model.
     " %}    
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set parent_ref_keys         = datavault4dbt.yaml_metadata_parser(name='parent_ref_keys', yaml_metadata=yaml_metadata, parameter=parent_ref_keys, required=True, documentation=parent_ref_keys_description) -%}
     {%- set src_hashdiff            = datavault4dbt.yaml_metadata_parser(name='src_hashdiff', yaml_metadata=yaml_metadata, parameter=src_hashdiff, required=True, documentation=src_hashdiff_description) -%}
     {%- set src_payload             = datavault4dbt.yaml_metadata_parser(name='src_payload', yaml_metadata=yaml_metadata, parameter=src_payload, required=True, documentation=src_payload_description) -%}

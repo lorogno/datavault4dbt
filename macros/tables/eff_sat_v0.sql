@@ -1,6 +1,6 @@
 {%- macro eff_sat_v0(yaml_metadata=none, source_model=none, tracked_hashkey=none,  src_ldts=none, src_rsrc=none, is_active_alias=none, source_is_single_batch=true, disable_hwm=false) -%}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {% set source_model             = datavault4dbt.yaml_metadata_parser(name='source_model', yaml_metadata=yaml_metadata, parameter=source_model, required=True, documentation='Name of the source model') %}
     {% set tracked_hashkey          = datavault4dbt.yaml_metadata_parser(name='tracked_hashkey', yaml_metadata=yaml_metadata, parameter=tracked_hashkey, required=True, documentation='Name of the hashkey column to be tracked') %}
     {% set src_ldts                 = datavault4dbt.yaml_metadata_parser(name='src_ldts', yaml_metadata=yaml_metadata, parameter=src_ldts, required=False, documentation='Name of the loaddate column in the source model. Optional.') %}

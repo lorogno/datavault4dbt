@@ -73,7 +73,7 @@
                                 set inside dbt_project.yml
     " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {% set control_snap_v0  = datavault4dbt.yaml_metadata_parser(name='control_snap_v0', yaml_metadata=yaml_metadata, parameter=control_snap_v0, required=True, documentation=control_snap_v0_description) %}
     {% set log_logic        = datavault4dbt.yaml_metadata_parser(name='log_logic', yaml_metadata=yaml_metadata, parameter=log_logic, required=False, documentation=log_logic_description) %}
     {% set sdts_alias       = datavault4dbt.yaml_metadata_parser(name='sdts_alias', yaml_metadata=yaml_metadata, parameter=sdts_alias, required=False, documentation=sdts_alias_description) %}

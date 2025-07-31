@@ -78,7 +78,7 @@
     " %}
 
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set link_hashkey        = datavault4dbt.yaml_metadata_parser(name='link_hashkey', yaml_metadata=yaml_metadata, parameter=link_hashkey, required=True, documentation=link_hashkey_description) -%}
     {%- set foreign_hashkeys    = datavault4dbt.yaml_metadata_parser(name='foreign_hashkeys', yaml_metadata=yaml_metadata, parameter=foreign_hashkeys, required=True, documentation=foreign_hashkeys_description) -%}
     {%- set source_models       = datavault4dbt.yaml_metadata_parser(name='source_models', yaml_metadata=yaml_metadata, parameter=source_models, required=True, documentation=source_models_description) -%}

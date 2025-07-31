@@ -62,7 +62,7 @@
     include_payload::boolean        Optional parameter to specify if the v1 sat should have the payload columns from sat v0 or not. Default is true.
     " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set sat_v0              = datavault4dbt.yaml_metadata_parser(name='sat_v0', yaml_metadata=yaml_metadata, parameter=sat_v0, required=True, documentation=sat_v0_description) -%}
     {%- set hashkey             = datavault4dbt.yaml_metadata_parser(name='hashkey', yaml_metadata=yaml_metadata, parameter=hashkey, required=True, documentation=hashkey_description) -%}
     {%- set hashdiff            = datavault4dbt.yaml_metadata_parser(name='hashdiff', yaml_metadata=yaml_metadata, parameter=hashdiff, required=True, documentation=hashdiff_description) -%}

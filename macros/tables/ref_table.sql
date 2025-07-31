@@ -30,7 +30,7 @@
     snapshot_trigger_column::string     Only required, if 'historized' set to 'snapshot'. Defaults to global variable 'datavault4dbt.sdts_alias'. Only needs to be set if alias deviates from global variable.
     " %}
 
-{%- if var('datavault4dbt.use_metadata_parser', false) -%}
+{%- if var('datavault4dbt.use_metadata_parser', true) -%}
     {%- set ref_hub                 = datavault4dbt.yaml_metadata_parser(name='ref_hub', yaml_metadata=yaml_metadata, parameter=ref_hub, required=True, documentation=ref_hub_description) -%}
     {%- set ref_satellites          = datavault4dbt.yaml_metadata_parser(name='ref_satellites', yaml_metadata=yaml_metadata, parameter=ref_satellites, required=True, documentation=ref_satellites_description) -%}
     {%- set src_ldts                = datavault4dbt.yaml_metadata_parser(name='src_ldts', yaml_metadata=yaml_metadata, parameter=src_ldts, required=False, documentation=src_ldts_description) -%}
