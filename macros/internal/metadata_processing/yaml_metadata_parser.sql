@@ -1,10 +1,8 @@
-{%- macro yaml_metadata_parser(name=none, yaml_metadata=none, parameter=none, required=False, documentation=none) -%}
+{% macro yaml_metadata_parser(name=none, yaml_metadata=none, parameter=none, required=False, documentation=none) %}
+{% if not execute %}
+    {% do return('none') %}
+{% else %}
 
-    {{- adapter.dispatch('yaml_metadata_parser', 'datavault4dbt')(name, yaml_metadata, parameter, required, documentation) -}}
-
-{%- endmacro %}
-
-{% macro default__yaml_metadata_parser(name=none, yaml_metadata=none, parameter=none, required=False, documentation=none) %}
     {% if datavault4dbt.is_something(yaml_metadata) %}
         {%- set metadata_dict = fromyaml(yaml_metadata) -%}
         {% if name in metadata_dict.keys() %}
@@ -28,6 +26,7 @@
         {% set return_value = None %}
     {% endif %}
 
-    {% do return(return_value)%}
+    {% do return(return_value) %}
 
+{% endif %}
 {% endmacro %}
