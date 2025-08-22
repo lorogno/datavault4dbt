@@ -222,7 +222,7 @@
 {%- macro process_prejoined_columns(prejoined_columns=none) -%}
     {# Check if the old syntax is used for prejoined columns
         If so parse it to new list syntax #}
-
+{% if execute %}
     {% if datavault4dbt.is_list(prejoined_columns) %}
         {% do return(prejoined_columns) %}
     {% else %}
@@ -271,7 +271,11 @@
     {% endif %}
 
     {%- do return(output) -%}
+{% else %}
 
+   {%- do return(none) -%} 
+    
+{% endif %}
 {%- endmacro -%}
 
 
